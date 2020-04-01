@@ -13,25 +13,25 @@
  
       <p style="color: red;">${errorMessage}</p>
  
-      <form >
+      <form method="POST" action="${pageContext.request.contextPath}/login">
+         <input type="hidden" name="redirectId" value="${param.redirectId}" />
          <table >
             <tr>
                <td>Имя пользователя</td>
-               <td><input type="text" name="userName" /> </td>
+               <td><input type="text" name="userName" value= "${user.userName}" /> </td>
             </tr>
             <tr>
                <td>Пароль</td>
-               <td><input type="password" name="password" /> </td>
+               <td><input type="password" name="password" value= "${user.password}" /> </td>
             </tr>
           
             <tr>
                <td colspan ="2">
                   <input type="submit" value= "Применить" />
-                  <a href="/">Назад</a>
+                  <a href="${pageContext.request.contextPath}/">Назад</a>
                </td>
             </tr>
          </table>
-      </form> 
-      
+      </form>    
    </body>
 </html>
