@@ -20,7 +20,7 @@ animation: blink 2s infinite;
  </head>
  <body>
   <div class="center">
-   <a href="/login">Welcome to the site BIG_FOOT</a>
+   <a href="/login">Welcome to the site BIG_FOOD</a>
   </div>
  </body>
 </html>
