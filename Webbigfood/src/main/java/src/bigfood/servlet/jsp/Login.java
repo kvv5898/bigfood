@@ -41,12 +41,17 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
  
     	 Connection conn = null;
- 		try {
- 			conn = JDBCPostgreSQL.conni();
- 		} catch (ClassNotFoundException | SQLException e1) {
- 			// TODO Auto-generated catch block
- 			e1.printStackTrace();
- 		}
+ 		
+ 			try {
+				conn = JDBCPostgreSQL.conni();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 		
  		
         String user_name = request.getParameter("userName");
         String password = request.getParameter("password");
