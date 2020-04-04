@@ -10,9 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import src.bigfood.conn.JDBCPostgreSQL;
 import src.bigfood.tabl.User_account;
+import src.bigfoodlog.logUser;
 import src.sql.Finduser;
 
 
@@ -39,7 +41,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
- 
+    	HttpSession session = request.getSession();
     	 Connection conn = null;
  		
  			try {
@@ -74,11 +76,12 @@ public class Login extends HttpServlet {
             dispatcher.forward(request, response);
             return;
         }
-        
- 
-       
+        else if (userAccount.getuser_name()==user_name) {
+        	logUser.storelogUser(session, userAccount);
         	System.out.println("Request in notices.java");
             response.sendRedirect(request.getContextPath() + "/home");
+		}
+ 
         }
  
     }

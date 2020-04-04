@@ -43,6 +43,7 @@ public class logUser {
         User_account logUser = (User_account) session.getAttribute("logUser");
         if (logUser == null) {
         	System.out.println("No User Info");
+        	return null;
         } else {
         	System.out.println("session.getId: - " + session.getId());
         	System.out.println("To read logUser for " + logUser.getuser_name());

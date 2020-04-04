@@ -8,7 +8,7 @@ public class User_account {
 	   private Integer user_id;
 	   private String date;
 	   private String surname;
-	   private String first_Name;
+	   private String first_name;
 	   private String otchestvo;
 	   private String otdel;
 	   private String tel;
@@ -17,11 +17,11 @@ public class User_account {
 	   private String password;
 	   private String rule;
 	    
-	   public User_account(Integer user_id, String date, String surname, String first_Name, String otchestvo, String otdel, String tel, String email, String user_name, String password, String rule) {
+	   public User_account(Integer user_id, String date, String surname, String first_name, String otchestvo, String otdel, String tel, String email, String user_name, String password, String rule) {
 		   this.user_id = user_id;
 		   this.date = date;
 		   this.surname = surname;
-		   this.first_Name = first_Name;
+		   this.first_name = first_name;
 		   this.otchestvo = otchestvo;
 		   this.otdel = otdel;
 		   this.tel = tel;
@@ -33,7 +33,10 @@ public class User_account {
 	      
 	   }
 	    
-
+	   public User_account() {
+			// TODO Auto-generated constructor stub
+		}
+	   
 	public Integer getuser_id() {
 	       return user_id;
 	   }
@@ -60,12 +63,12 @@ public class User_account {
 	   }
 	   
 	   
-	   public String getfirst_Name() {
-	       return first_Name;
+	   public String getfirst_name() {
+	       return first_name;
 	   }
 	 
-	   public void setfirst_Name(String first_Name) {
-	       this.first_Name = first_Name;
+	   public void setfirst_name(String first_name) {
+	       this.first_name = first_name;
 	   }
 	   
 	   public String getotchestvo() {
