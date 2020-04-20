@@ -7,59 +7,78 @@
      <title>Home Page</title>
   </head>
   <body>
- 
+ <table border="2" align="center">
+   <th >Меню</th>
+   <th colspan="4">Подразделение</th>
+   <th>Логотип</th>
+  <tr>
+    <td height="25" colspan="6"></td>
+  </tr>
+  <tr>
+<td rowspan="4" colspan="3">Фото</td>
+
+<td>Фамилия</td>
+<td>Имя</td>
+<td>Отчество</td>
+</tr>
+  <tr>
+    
+    <td colspan="3">Подрозделение</td>
+  </tr>
+  <tr>
+    
+    <td colspan="3">Должность</td>
+  </tr>
+  <tr>
+     
+    <td colspan="3">Скидка</td>
+  </tr>
+  <tr>
+    <td height="25" colspan="6"></td>
+  </tr>
+  <tr>
+    <td height="25" colspan="3"></td>
+    <td>Отмена</td>
+    <td></td>
+    <td>Применить</td>
+  </tr>
+  <tr>
+    <td height="25" colspan="6"></td>
+  </tr>
+  <tr>
+    <td rowspan="4" colspan="3"></td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    
+    <td>6</td>
+    <td>5</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Очистить</td>
+    <td>,</td>
+  </tr>
+  <tr>
+    <td height="25" colspan="6"></td>
+  </tr>
+  <tr>
+    <td height="25" colspan="6">Copyright</td>
+  </tr>
+</table>
     
     
-      <h3>Текущая сессия - ${session}</h3> <a href="${pageContext.request.contextPath}/exit">Выход</a>
-      
-         <table border="2">
-   <th>Данные подключения</th>
-   <th>Параметры</th>
-   
-   
-       <c:forEach items="${userinfo}" var="userinfo" >
-          <tr>
-          <td><p>Дата создания аккаунта</p> </td>
-          <td><p>${userinfo.date}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Имя</p> </td>
-          <td><p>${userinfo.surname}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Фамилия</p> </td>
-          <td><p>${userinfo.first_name}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Отчество</p> </td>
-          <td><p>${userinfo.otchestvo}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Отдел</p> </td>
-          <td><p>${userinfo.otdel}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Контактынй телефон</p> </td>
-          <td><p>${userinfo.tel}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Почтовый ящик</p> </td>
-          <td><p>${userinfo.email}</p> </td>
-          </tr>
-          <tr>
-          <td><p>user_name</p> </td>
-          <td><p>${userinfo.user_name}</p> </td>
-          </tr>
-          <tr>
-          <td><p>PASSWORD</p> </td>
-          <td><p>${userinfo.password}</p> </td>
-          </tr>
-          <tr>
-          <td><p>Прова</p> </td>
-          <td><p>${userinfo.rule}</p> </td>
-          </tr>       
-       </c:forEach>
-  </table>
- 
+     <a href="${pageContext.request.contextPath}/exit">Выход</a>
+     <br>
+     <a href="${pageContext.request.contextPath}/techinfo">Информация по подключению</a> 
+        
   </body>
 </html>

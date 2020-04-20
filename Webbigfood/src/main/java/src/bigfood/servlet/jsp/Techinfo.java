@@ -8,21 +8,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import src.bigfoodlog.logUser;
 
-@WebServlet(urlPatterns = { "/home"})
-public class HomeServlet extends HttpServlet {
+ 
+@WebServlet(urlPatterns = { "/techinfo"})
+public class Techinfo extends HttpServlet {
    private static final long serialVersionUID = 1L;
  
-   public HomeServlet() {
+   public Techinfo() {
        super();
    }
  
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
+	   HttpSession session = request.getSession();
 	   
-       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/homeView.jsp");
+ 
+	   request.setAttribute("userinfo", logUser.getlogUser(session));
+	   request.setAttribute("session", session.getId());
+	   
+       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/techinfo.jsp");
         
        dispatcher.forward(request, response);
        
