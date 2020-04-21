@@ -11,6 +11,7 @@
     
     
       <h3>Текущая сессия - ${session}</h3> <a href="${pageContext.request.contextPath}/exit">Выход</a>
+      <br>
       <a href="${pageContext.request.contextPath}/home">Назад</a>
       
          <table border="2">

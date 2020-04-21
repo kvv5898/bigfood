@@ -3,82 +3,48 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style type="text/css">
+  <%@include file='styles/home.css' %>
+  <%@include file='styles/menu.css' %>
+</style>
      <meta charset="UTF-8">
      <title>Home Page</title>
   </head>
   <body>
- <table border="2" align="center">
-   <th >Меню</th>
-   <th colspan="4">Подразделение</th>
-   <th>Логотип</th>
-  <tr>
-    <td height="25" colspan="6"></td>
-  </tr>
-  <tr>
-<td rowspan="4" colspan="3">Фото</td>
-
-<td>Фамилия</td>
-<td>Имя</td>
-<td>Отчество</td>
-</tr>
-  <tr>
-    
-    <td colspan="3">Подрозделение</td>
-  </tr>
-  <tr>
-    
-    <td colspan="3">Должность</td>
-  </tr>
-  <tr>
-     
-    <td colspan="3">Скидка</td>
-  </tr>
-  <tr>
-    <td height="25" colspan="6"></td>
-  </tr>
-  <tr>
-    <td height="25" colspan="3"></td>
-    <td>Отмена</td>
-    <td></td>
-    <td>Применить</td>
-  </tr>
-  <tr>
-    <td height="25" colspan="6"></td>
-  </tr>
-  <tr>
-    <td rowspan="4" colspan="3"></td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-  </tr>
-  <tr>
-    
-    <td>6</td>
-    <td>5</td>
-    <td>4</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>2</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>Очистить</td>
-    <td>,</td>
-  </tr>
-  <tr>
-    <td height="25" colspan="6"></td>
-  </tr>
-  <tr>
-    <td height="25" colspan="6">Copyright</td>
-  </tr>
-</table>
-    
-    
-     <a href="${pageContext.request.contextPath}/exit">Выход</a>
-     <br>
-     <a href="${pageContext.request.contextPath}/techinfo">Информация по подключению</a> 
-        
+  <jsp:include page="_header.jsp"></jsp:include>
+    <center><form name="calc" id="calculator" >
+	<table >
+	<tr><td><input type="text" disabled name="fio" size="16" class="display" placeholder="ФИО"/></td></tr>
+	<tr><td><input type="text" disabled name="podr" size="16" placeholder="Подразделение" class="display"></td></tr>
+	<tr><td><input type="text" disabled name="dol" size="16" placeholder="Должность" class="display"></td></tr>
+	<tr><td><input type="text" readonly name="input" size="16" placeholder="Скидка" class="display"></td></tr>
+	<tr><td>
+	<br>
+	<input type="reset" class="esc" name="otmena" value="Отмена"/>
+	<input type="submit" class="ok" value="Применить" />
+	</td>
+	</tr>
+	<tr>
+	<td class="buttons">
+		<input type="button" name="seven" value="7" OnClick="calc.input.value += '7'">
+		<input type="button" name="eight" value="8" OnClick="calc.input.value += '8'">
+		<input type="button" name="nine" value="9" OnClick="calc.input.value += '9'">
+		<br>
+		<input type="button" name="four" value="4" OnClick="calc.input.value += '4'">
+		<input type="button" name="five" value="5" OnClick="calc.input.value += '5'">
+		<input type="button" name="six" value="6" OnClick="calc.input.value += '6'">
+		<br>
+		<input type="button" name="one" value="1" OnClick="calc.input.value += '1'">
+		<input type="button" name="two" value="2" OnClick="calc.input.value += '2'">
+		<input type="button" name="three" value="3" OnClick="calc.input.value += '3'">
+		<br>
+		<input type="button" name="zero" value="0" OnClick="calc.input.value += '0'">
+		<input type="button" name="clear" value="Очистить" OnClick="calc.input.value = ''">
+		<input type="button" name="div"  value="," OnClick="calc.input.value += ','">
+	</td>
+	</tr>
+	</table>
+</form></center>
+  <jsp:include page="_footer.jsp"></jsp:include>      
   </body>
 </html>
