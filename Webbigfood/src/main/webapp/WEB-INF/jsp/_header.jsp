@@ -5,8 +5,7 @@
   <head>
    </html>
 <body>
-
-  <div style="float: right; padding: 10px; text-align: right;">
+  
 <table border="3" align="center">
    <th width="150">
    
@@ -24,6 +23,5 @@
    <th width="800">Система</th>
    <th width="150">Логотип</th>
 </table>
- </div>
 </body>
 </html>

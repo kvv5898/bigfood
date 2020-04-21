@@ -10,8 +10,8 @@
      <meta charset="UTF-8">
      <title>Home Page</title>
   </head>
-  <body>
   <jsp:include page="_header.jsp"></jsp:include>
+  <body>
     <center><form name="calc" id="calculator" >
 	<table >
 	<tr><td><input type="text" disabled name="fio" size="16" class="display" placeholder="ФИО"/></td></tr>
