@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
 import src.bigfood.tabl.User_account;
@@ -19,15 +18,18 @@ public class logUser {
     private static final Map<String, Integer> uri_id_map = new HashMap<String, Integer>();
  
     
-    public static void storeConnection(ServletRequest request, Connection conn) {
-    	System.out.println("Write log for Connection (JAVA):" + conn);
-        request.setAttribute(ATT_NAME_CONNECTION, conn);
+    public static void storeConnection(HttpSession session, Connection conn) {
+    	System.out.println("Write request:" + session);
+    	session.setAttribute(ATT_NAME_CONNECTION, conn);
+        System.out.println("Write conn:" + session.getAttribute(ATT_NAME_CONNECTION));
+        
     }
  
     
-    public static Connection getStoredConnection(ServletRequest request) {
-    	System.out.println("Read conn - " + request.getAttribute(ATT_NAME_CONNECTION));
-        Connection conn = (Connection) request.getAttribute(ATT_NAME_CONNECTION);
+    public static Connection getStoredConnection(HttpSession session) {
+    	System.out.println("Read reques - " + session);
+        Connection conn = (Connection) session.getAttribute(ATT_NAME_CONNECTION);
+        System.out.println("Read conn - " + session.getAttribute(ATT_NAME_CONNECTION));
         return conn;
     }
     

@@ -38,7 +38,11 @@
   </dependencies>
   <build>
     <finalName>Webbigfood</finalName>
-    
+    <resources>
+            <resource>
+                <directory>src/resources</directory>
+            </resource>
+    </resources>
     <plugins>
     
      <plugin>

@@ -1,8 +1,6 @@
 package src.filter;
 
 import java.io.IOException;
-
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -46,6 +44,7 @@ public class ServletFilter implements Filter {
         if (logUs == null) {System.out.println("request.getContextPath()" + request.getContextPath()); response.sendRedirect(request.getContextPath() + "/login");}
         else {
         System.out.println("logUs " + logUs);
+        
         chain.doFilter(request, response);
         }
     }

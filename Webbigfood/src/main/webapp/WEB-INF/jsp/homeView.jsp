@@ -1,23 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
   <head>
   <style type="text/css">
   <%@include file='styles/home.css' %>
   <%@include file='styles/menu.css' %>
+  .header {
+  width: 600px;
+  height: 120px;
+  }
+  .page {
+  width: 260px;
+  height: 260px;
+  float: left;
+  background-size: contain;
+  }
+  .content {
+  width: 370px;
+  height: 450px;
+  margin-left: 305px;
+  }
+  
+  .scann {
+  width: 250px;
+  height: 0px;
+  margin-left: 10px;
+  }
+  
+  .footer {
+  width: 600px;
+  height: 120px;
+  }
 </style>
      <meta charset="UTF-8">
      <title>Home Page</title>
   </head>
-  <jsp:include page="_header.jsp"></jsp:include>
+  
   <body>
-    <center><form name="calc" id="calculator" >
-	<table >
-	<tr><td><input type="text" disabled name="fio" size="16" class="display" placeholder="ФИО"/></td></tr>
-	<tr><td><input type="text" disabled name="podr" size="16" placeholder="Подразделение" class="display"></td></tr>
-	<tr><td><input type="text" disabled name="dol" size="16" placeholder="Должность" class="display"></td></tr>
-	<tr><td><input type="text" readonly name="input" size="16" placeholder="Скидка" class="display"></td></tr>
+  
+  <p>${data.surname}</p>
+
+  <p style="color: red;">${errorString}</p>
+  <div class="header"><jsp:include page="_header.jsp"></jsp:include></div>
+    <div class="page"><img src="${foto}" width="300" height="200" alt="Фото" /></div>
+    <div class="scann"><form method="POST">
+    <input type="submit" class="sc" name="scann" value="scann" />
+    </form></div>
+    <div class="content"><form method="POST" action="${pageContext.request.contextPath}/home" name="calc" id="calculator" >
+	<table>
+	<tr>
+	<td><input type="text" disabled name="fio" size="16" class="display" placeholder="${fio}"/></td></tr>
+	<tr>
+	<td><input type="text" disabled name="otdel" size="16" placeholder="${otdel}" class="display"></td></tr>
+	<tr>
+	<td><input type="text" disabled name="position" size="16" placeholder="${position}" class="display"></td></tr>
+	<tr>
+	<td><input type="text" readonly name="input" size="16" class="display"></td></tr>
 	<tr><td>
 	<br>
 	<input type="reset" class="esc" name="otmena" value="Отмена"/>
@@ -44,7 +84,9 @@
 	</td>
 	</tr>
 	</table>
-</form></center>
-  <jsp:include page="_footer.jsp"></jsp:include>      
+</form>
+</div>
+  <div class="footer"><jsp:include page="_footer.jsp"></jsp:include> </div>
   </body>
+   
 </html>

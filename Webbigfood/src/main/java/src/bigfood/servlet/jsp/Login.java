@@ -78,7 +78,9 @@ public class Login extends HttpServlet {
         }
         else if (userAccount.getuser_name()==user_name) {
         	logUser.storelogUser(session, userAccount);
-        	System.out.println("Request in ...");
+        	logUser.storeConnection(session,conn);
+        	
+        	System.out.println("Request in /home");
             response.sendRedirect(request.getContextPath() + "/home");
 		}
  
