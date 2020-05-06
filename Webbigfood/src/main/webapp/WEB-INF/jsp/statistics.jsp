@@ -6,6 +6,10 @@
   <head>
   <style type="text/css">
   <%@include file='styles/menu.css' %>
+   TABLE {
+    table-layout: fixed; /* Ячейки фиксированной ширины */
+   }
+  
   .header {
   width: 600px;
   height: 90px;
@@ -33,7 +37,7 @@
   .footer {
   width: 600px;
   height: 50px;
-  float: left;
+  
   <!--background: maroon;-->
   }
 </style>
@@ -47,17 +51,17 @@
      <p style="color: red;">${error}</p>
     <div class="content"><form method="POST" action="statistics">
 	<br>
-	<table border="0">
-	<th><input type="text" name="input" placeholder="Введите ID"></th>
-	<th><input type="submit" value="Применить" /></th>
+	<input type="text" name="input" placeholder="Введите ID">
+	<input type="submit" value="Применить" />
+	<table width="100%" cellspacing="0" cellpadding="4" border="1">
 	<tr><td>ID</td>
-	<td><input type="text" disabled name="cod_id" value="${cod_id}"></td></tr>
+	<td>${cod_id}</td></tr>
 	<tr><td>ФИО</td>
-	<td><input type="text" disabled name="fio" value="${fio}" ></td></tr>
+	<td>${fio}</td></tr>
 	<tr><td>Отдел</td>
-	<td><input type="text" disabled name="otdel" value="${otdel}" ></td></tr>
+	<td>${otdel}</td></tr>
 	<tr><td>Должность</td>
-	<td><input type="text" disabled name="position" value="${position}" ></td>
+	<td>${position}</td>
 	</tr>
 	</table>
 	<br>
