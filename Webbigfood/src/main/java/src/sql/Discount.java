@@ -157,7 +157,7 @@ public class Discount {
 	}	
 	
 		public static List<Hdiscounts> idhistory(Connection conn, Integer cod_id) throws SQLException {
-	        String sql = "SELECT date, discount, total FROM dhistory WHERE cod_id=?";
+	        String sql = "SELECT date, discount, total FROM dhistory WHERE cod_id=? ORDER BY date";
 	        System.out.println("Search id history discounts in DB");
 	        PreparedStatement pstm = conn.prepareStatement(sql);
 	        pstm.setInt(1, cod_id);
