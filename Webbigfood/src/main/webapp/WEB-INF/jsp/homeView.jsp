@@ -19,7 +19,7 @@
   }
   .content {
   width: 370px;
-  height: 450px;
+  height: 530px;
   margin-left: 305px;
   }
   
@@ -44,18 +44,23 @@
 
   <p style="color: red;">${errorString}</p>
   <div class="header"><jsp:include page="_header.jsp"></jsp:include></div>
-    <div class="page"><img src="${foto}" width="300" height="200" alt="Фото" /></div>
+    <div class="page"><img src="${foto}" width="300" height="200" /></div>
     <div class="scann"><form method="POST">
     <input type="submit" class="sc" name="scann" value="scann" />
     </form></div>
     <div class="content"><form method="POST" action="${pageContext.request.contextPath}/home" name="calc" id="calculator" >
 	<table>
+	<tr><td><input type="hidden" name="cod_id" value="${cod_id}"/></td></tr>
+	<tr><td>ФИО</td></tr>
 	<tr>
 	<td><input type="text" disabled name="fio" size="16" class="display" placeholder="${fio}"/></td></tr>
+	<tr><td>Отдел</td></tr>
 	<tr>
 	<td><input type="text" disabled name="otdel" size="16" placeholder="${otdel}" class="display"></td></tr>
+	<tr><td>Должность</td></tr>
 	<tr>
 	<td><input type="text" disabled name="position" size="16" placeholder="${position}" class="display"></td></tr>
+	<tr><td>Скидка</td></tr>
 	<tr>
 	<td><input type="text" readonly name="input" size="16" class="display"></td></tr>
 	<tr><td>
@@ -80,7 +85,7 @@
 		<br>
 		<input type="button" name="zero" value="0" OnClick="calc.input.value += '0'">
 		<input type="button" name="clear" value="Очистить" OnClick="calc.input.value = ''">
-		<input type="button" name="div"  value="," OnClick="calc.input.value += ','">
+		<input type="button" name="div"  value="." OnClick="calc.input.value += '.'">
 	</td>
 	</tr>
 	</table>

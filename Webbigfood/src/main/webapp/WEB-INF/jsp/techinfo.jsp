@@ -12,7 +12,7 @@
     
       <h3>Текущая сессия - ${session}</h3> <a href="${pageContext.request.contextPath}/exit">Выход</a>
       <br>
-      <a href="${pageContext.request.contextPath}/home">Назад</a>
+      <a href="${pageContext.request.contextPath}/info">Назад</a>
       
          <table border="2">
    <th>Данные подключения</th>

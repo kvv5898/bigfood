@@ -12,17 +12,17 @@ import src.bigfood.tabl.database;
 public class Findcod {
  
 	public static List<database> findcod(Connection conn, //
-			Integer cod_id) throws SQLException {
+			Integer id) throws SQLException {
 		
 		 String sql = "Select * from database where id = ?";
-	        System.out.println("Find (" + cod_id + ") in DB");
+	        System.out.println("Find (" + id + ") in DB");
 	        PreparedStatement pstm = conn.prepareStatement(sql);
-	        pstm.setInt(1, cod_id);
+	        pstm.setInt(1, id);
 	        ResultSet rs = pstm.executeQuery();
 	        List<database> list = new ArrayList<database>();
 	        while (rs.next()) {
 	        	
-	        	Integer id = rs.getInt("id");
+	        	Integer cod_id = rs.getInt("cod_id");
 	        	String foto = rs.getString("foto");
 	            String surname = rs.getString("surname");
 	            String first_name = rs.getString("first_name");

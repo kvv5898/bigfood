@@ -11,8 +11,10 @@
         <li>
             <a href="#">Меню</a>
                <ul class="sub-menu">
+                   <li><a href="${pageContext.request.contextPath}/home">Главная</a></li>
+                   <li><a href="${pageContext.request.contextPath}/info">Информация</a></li>
                    <li><a href="${pageContext.request.contextPath}/exit">Выход</a></li>
-                   <li><a href="${pageContext.request.contextPath}/techinfo">Админ</a></li>
+
                </ul>
         </li>
        
