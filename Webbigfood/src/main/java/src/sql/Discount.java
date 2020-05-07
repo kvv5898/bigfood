@@ -131,7 +131,7 @@ public class Discount {
 		
 		
 		public static List<Hdiscounts> infohistory(Connection conn) throws SQLException {
-	        String sql = "Select * from dhistory";
+	        String sql = "Select * from dhistory ORDER BY date";
 	        System.out.println("Search info history discounts in DB");
 	        PreparedStatement pstm = conn.prepareStatement(sql);
 	        ResultSet rs = pstm.executeQuery();

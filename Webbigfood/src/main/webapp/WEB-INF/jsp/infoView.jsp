@@ -14,10 +14,11 @@
   <a href="${pageContext.request.contextPath}/home">Главная</a>
   <br>
 <ul>               
-    <li><a href="${pageContext.request.contextPath}/techinfo">Информация о подключении</a></li>
-    <li><a href="${pageContext.request.contextPath}/discounts">Итоговая информация по скидкам</a></li>
-    <li><a href="${pageContext.request.contextPath}/hdiscounts">Подробная история по операциям</a></li>
-    <li><a href="${pageContext.request.contextPath}/statistics">Статистика по коду</a></li>
+    <li><a href="${pageContext.request.contextPath}/techinfo">Информация о пользователе</a></li>
+    <li><a href="${pageContext.request.contextPath}/auth">Информация о подключениях</a></li>
+    <li><a href="${pageContext.request.contextPath}/discounts">Скидки</a></li>
+    <li><a href="${pageContext.request.contextPath}/hdiscounts">История по операциям</a></li>
+    <li><a href="${pageContext.request.contextPath}/statistics">Поиск по коду</a></li>
          
 </ul>
 <div class="footer"><jsp:include page="_footer.jsp"></jsp:include> </div>
