@@ -8,15 +8,19 @@ public class Auth {
 	   private Integer id;
 	   private String date;
 	   private String ip;
+	   private String host;
+	   private String getway;
 	   private String user_in;
 	   private String pass_in;
 	   private String session;
 	   private String login_in;
 	    
-	   public Auth (Integer id, String date, String ip, String user_in, String pass_in, String session, String login_in) {
+	   public Auth (Integer id, String date, String ip, String host, String getway, String user_in, String pass_in, String session, String login_in) {
 		   this.id = id;
 		   this.date = date;
 		   this.ip = ip;
+		   this.ip = host;
+		   this.ip = getway;
 		   this.user_in = user_in;
 		   this.pass_in = pass_in;
 		   this.session = session;
@@ -50,6 +54,21 @@ public class Auth {
 	       this.ip = ip;
 	   }
 	 
+	   public String gethost() {
+	       return host;
+	   }
+	 
+	   public void sethost(String host) {
+	       this.host = host;
+	   }
+	   
+	   public String getgetway() {
+	       return getway;
+	   }
+	 
+	   public void setgetway(String getway) {
+	       this.getway = getway;
+	   }
 	   
 	   public String getuser_in() {
 	       return user_in;

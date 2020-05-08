@@ -14,10 +14,12 @@
   <body>
   <jsp:include page="_header.jsp"></jsp:include>
 	<br>
-	<table border="1">
+	<table align="center" border="1">
 	<th>Id</th>
 	<th>Дата</th>
 	<th>IP</th>
+	<th>HOST</th>
+	<th>GETWAY</th>
 	<th>Пользователь</th>
 	<th>Пароль</th>
 	<th>ID сессии</th>
@@ -29,6 +31,8 @@
 	<td>${a.date()}</td>
 	
 	<td>${a.ip}</td>
+	<td>${a.host}</td>
+	<td>${a.getway}</td>
 	
 	<td>${a.user_in}</td>
 	

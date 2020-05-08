@@ -70,8 +70,8 @@ public class Login extends HttpServlet {
     	map = WebUtils.getHeadersInfo(request);
     	String host= map.get("host");
     	System.out.println("host:" + host);
-    	String getWay = request.getHeader("VIA");   // Gateway
-    	System.out.println("getWay: "+getWay);
+    	String getway = request.getHeader("VIA");   // Gateway
+    	System.out.println("getWay: "+getway);
     	
     	String ip=null;
     	ip = request.getHeader("X-FORWARDED-FOR");   // proxy
@@ -80,7 +80,6 @@ public class Login extends HttpServlet {
     	    ip = request.getRemoteAddr();
     	}
     	
-    	ip = ip+ " / " + getWay; 
     	System.out.println("IP Address: "+ip);
     	
         
@@ -95,7 +94,7 @@ public class Login extends HttpServlet {
         if (userAccount == null) {
             String errorMessage = "Invalid user_name or Password";
             try {
-				Log_Auth.Log(conn, ip, user_name, password, session.getId(), "fault");
+				Log_Auth.Log(conn, ip, host, getway, user_name, password, session.getId(), "fault");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -112,7 +111,7 @@ public class Login extends HttpServlet {
         	logUser.storelogUser(session, userAccount);
         	logUser.storeConnection(session,conn);
         	try {
-				Log_Auth.Log(conn, ip, user_name, password, session.getId(), "ok");
+				Log_Auth.Log(conn, ip, host, getway, user_name, password, session.getId(), "ok");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
