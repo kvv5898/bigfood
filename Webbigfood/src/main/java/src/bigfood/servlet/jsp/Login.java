@@ -37,6 +37,10 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
     	System.out.println("Request in LoginView.jsp");
     	
+    	String ipAddress =  request.getRemoteAddr();
+    	System.out.println("IP Address: "+ipAddress);
+    	
+    	
         RequestDispatcher dispatcher //
                 = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/LoginView.jsp");
  
@@ -64,8 +68,10 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         Map<String, String> map = new HashMap<String, String>();
     	map = WebUtils.getHeadersInfo(request);
-    	String ip= map.get("host");
-    	System.out.println("ip:" + ip);
+    	String host= map.get("host");
+    	System.out.println("host:" + host);
+    	String ip =  request.getRemoteAddr();
+    	System.out.println("IP Address: "+ip);
         
         User_account userAccount = null;
 		try {
