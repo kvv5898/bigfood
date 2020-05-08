@@ -70,8 +70,19 @@ public class Login extends HttpServlet {
     	map = WebUtils.getHeadersInfo(request);
     	String host= map.get("host");
     	System.out.println("host:" + host);
-    	String ip =  request.getRemoteAddr();
+    	String getWay = request.getHeader("VIA");   // Gateway
+    	System.out.println("getWay: "+getWay);
+    	
+    	String ip=null;
+    	ip = request.getHeader("X-FORWARDED-FOR");   // proxy
+    	if(ip==null)
+    	{
+    	    ip = request.getRemoteAddr();
+    	}
+    	
+    	ip = ip+ " / " + getWay; 
     	System.out.println("IP Address: "+ip);
+    	
         
         User_account userAccount = null;
 		try {
