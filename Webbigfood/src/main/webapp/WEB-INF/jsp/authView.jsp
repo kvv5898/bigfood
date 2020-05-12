@@ -14,21 +14,26 @@
   <body>
   <jsp:include page="_header.jsp"></jsp:include>
 	<br>
+	<p>Активных сессии: ${active_sessions}</p>
+	<p>Активных пользователи: ${active_users}</p>
+	<br>
 	<table align="center" border="1">
 	<th>Id</th>
-	<th>Дата</th>
+	<th>Начало сессии</th>
+	<th>Конец сессии</th>
 	<th>IP</th>
 	<th>HOST</th>
 	<th>GETWAY</th>
 	<th>Пользователь</th>
 	<th>Пароль</th>
 	<th>ID сессии</th>
-	<th>Вход</th>
+	<th>Статус</th>
 	<c:forEach var="a" items="${auth}">
 	<tr>
 	<td>${a.id()}</td>
 	
-	<td>${a.date()}</td>
+	<td>${a.date_start()}</td>
+	<td>${a.date_end()}</td>
 	
 	<td>${a.ip}</td>
 	<td>${a.host}</td>
@@ -40,7 +45,7 @@
 	
 	<td>${a.session}</td>
 	
-	<td>${a.login_in}</td>
+	<td>${a.status}</td>
 	</tr>
 	</c:forEach>
 	</table>

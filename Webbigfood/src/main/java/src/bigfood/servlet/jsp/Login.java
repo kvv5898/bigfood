@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import src.bigfood.conn.JDBCPostgreSQL;
 import src.bigfood.tabl.User_account;
 import src.bigfoodlog.logUser;
+import src.other.StoreSession;
 import src.other.WebUtils;
 import src.sql.Finduser;
 import src.sql.Log_Auth;
@@ -37,10 +38,6 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
     	System.out.println("Request in LoginView.jsp");
     	
-    	String ipAddress =  request.getRemoteAddr();
-    	System.out.println("IP Address: "+ipAddress);
-    	
-    	
         RequestDispatcher dispatcher //
                 = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/LoginView.jsp");
  
@@ -51,6 +48,9 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	HttpSession session = request.getSession();
+    	session.setMaxInactiveInterval(60*3);
+    	
+    	    	
     	 Connection conn = null;
  		
  			try {
@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
 				e.printStackTrace();
 			}
  		
- 		
+ 	    String errorMessage = null;
         String user_name = request.getParameter("userName");
         String password = request.getParameter("password");
         Map<String, String> map = new HashMap<String, String>();
@@ -92,7 +92,7 @@ public class Login extends HttpServlet {
 		}
 		
         if (userAccount == null) {
-            String errorMessage = "Invalid user_name or Password";
+            errorMessage = "Invalid user_name or Password";
             try {
 				Log_Auth.Log(conn, ip, host, getway, user_name, password, session.getId(), "fault");
 			} catch (SQLException e) {
@@ -108,17 +108,33 @@ public class Login extends HttpServlet {
             return;
         }
         else if (userAccount.getuser_name()==user_name) {
-        	logUser.storelogUser(session, userAccount);
-        	logUser.storeConnection(session,conn);
-        	try {
-				Log_Auth.Log(conn, ip, host, getway, user_name, password, session.getId(), "ok");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
         	
-        	System.out.println("Request in /home");
-            response.sendRedirect(request.getContextPath() + "/home");
+        	if (StoreSession.getuser().contains(user_name)) 
+        	{
+        		errorMessage = "user online";
+        		request.setAttribute("errorMessage", errorMessage);
+        		 
+                RequestDispatcher dispatcher //
+                        = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/LoginView.jsp");
+     
+                dispatcher.forward(request, response);
+                return;	
+        	}
+        	
+        	else {
+        		StoreSession.adduser(user_name, session.getId());
+        		logUser.storelogUser(session, userAccount);
+            	logUser.storeConnection(session,conn);
+            	try {
+    				Log_Auth.Log(conn, ip, host, getway, user_name, password, session.getId(), "ok");
+    			} catch (SQLException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+            	
+            	System.out.println("Request in /home");
+                response.sendRedirect(request.getContextPath() + "/home");
+			}
 		}
  
         }

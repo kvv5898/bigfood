@@ -13,8 +13,8 @@ import src.other.date_time;
 public class Log_Auth {
 	
 	public static void Log(Connection conn, //
-		String ip, String host, String getway, String user_name, String password, String session, String login_in) throws SQLException {
-        String sql = "Insert into auth(date, ip, host, getway, user_in, pass_in, session, login_in) values (?,?,?,?,?,?,?,?)";
+		String ip, String host, String getway, String user_name, String password, String session, String status) throws SQLException {
+        String sql = "Insert into auth(date_start, ip, host, getway, user_in, pass_in, session, status) values (?,?,?,?,?,?,?,?)";
  
         PreparedStatement add = conn.prepareStatement(sql);
  
@@ -26,7 +26,7 @@ public class Log_Auth {
         add.setString(5, user_name);
         add.setString(6, password);
         add.setString(7, session);
-        add.setString(8, login_in);
+        add.setString(8, status);
  
         add.executeUpdate();
 	
@@ -41,30 +41,68 @@ public class Log_Auth {
 	        while (rs.next()) {
 	        	
 	        	Integer id = rs.getInt("id");
-	        	String date = rs.getString("date");
+	        	String date_start = rs.getString("date_start");
+	        	String date_end = rs.getString("date_end");
 	            String ip = rs.getString("ip");
 	            String host = rs.getString("host");
 	            String getway = rs.getString("getway");
 	            String user_in = rs.getString("user_in");
 	            String pass_in = rs.getString("pass_in");
 	            String session = rs.getString("session");
-	            String login_in = rs.getString("login_in");
+	            String status = rs.getString("status");
 
-	            Auth us = new Auth(id, date, ip, host, getway, user_in, pass_in, session, login_in);
+	            Auth us = new Auth(id, date_start, date_end, ip, host, getway, user_in, pass_in, session, status);
 	            
 	            us.setid(id);
-	            us.setdate(date);
+	            us.setdate_start(date_start);
+	            us.setdate_end(date_end);
 	            us.setip(ip);
 	            us.sethost(host);
 	            us.setgetway(getway);
 	            us.setuser_in(user_in);
 	            us.setpass_in(pass_in);
 	            us.setsession(session);
-	            us.setlogin_in(login_in);
+	            us.setstatus(status);
 	            list.add(us);
 	        }
 	        return list;
 		
 		
 	}
+	
+	
+public static String session (String user, Connection conn) throws SQLException {
+        
+		System.out.println("Search session in Auth DB for user: " + user);
+		
+		String sql = "SELECT session FROM auth WHERE user_in =? AND status = ? ORDER BY id DESC LIMIT 1";
+ 
+		PreparedStatement s = conn.prepareStatement(sql);
+        s.setString(1, user);
+        s.setString(2, "ok");
+        s.executeQuery();
+          
+        ResultSet rs = s.executeQuery();
+      
+        
+        String session = null;
+        while (rs.next()) {
+        	session = rs.getString("session");
+        }
+		return session;
+}
+
+public static void date_end(Connection conn, String session_id) throws SQLException {
+    String sql = "Update auth set date_end=? where session=? ";
+
+    PreparedStatement pstm = conn.prepareStatement(sql);
+    System.out.println("Entry date_end for session_id: - " + session_id);
+    pstm.setString(1, date_time.date());
+    pstm.setString(2, session_id);
+   
+    
+    pstm.executeUpdate();
+}
+
+
 	}

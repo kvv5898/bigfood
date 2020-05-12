@@ -19,13 +19,17 @@ public class ExitServlet extends HttpServlet {
         super();
     }
  
+    @Override
+    public void destroy() {
+ 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	HttpSession session = request.getSession();
     	session.invalidate();
-            
+
             System.out.println("exit session.invalidate(): " + session);  
             response.sendRedirect(request.getContextPath() + "/login");
         }

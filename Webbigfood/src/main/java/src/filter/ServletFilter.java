@@ -30,7 +30,6 @@ public class ServletFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
         
         System.out.println("Security Filter works");
-        
         String servletPath = request.getServletPath();
         
         if (servletPath.equals("/login")) {

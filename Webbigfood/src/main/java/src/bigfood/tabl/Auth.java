@@ -6,25 +6,27 @@ package src.bigfood.tabl;
 public class Auth {
 
 	   private Integer id;
-	   private String date;
+	   private String date_start;
+	   private String date_end;
 	   private String ip;
 	   private String host;
 	   private String getway;
 	   private String user_in;
 	   private String pass_in;
 	   private String session;
-	   private String login_in;
+	   private String status;
 	    
-	   public Auth (Integer id, String date, String ip, String host, String getway, String user_in, String pass_in, String session, String login_in) {
+	   public Auth (Integer id, String date_start, String date_end, String ip, String host, String getway, String user_in, String pass_in, String session, String status) {
 		   this.id = id;
-		   this.date = date;
+		   this.date_start = date_start;
+		   this.date_end = date_end;
 		   this.ip = ip;
 		   this.ip = host;
 		   this.ip = getway;
 		   this.user_in = user_in;
 		   this.pass_in = pass_in;
 		   this.session = session;
-		   this.login_in = login_in;
+		   this.status = status;
 	       
 	      
 	   }
@@ -37,13 +39,21 @@ public class Auth {
 	   public void setid(Integer id) {
 	       this.id = id;
 	   }
-	 
-	   public String date() {
-	       return date;
+	   
+	   public String date_start() {
+	       return date_start;
 	   }
 	 
-	   public void setdate(String date) {
-	       this.date = date;
+	   public void setdate_start(String date_start) {
+	       this.date_start = date_start;
+	   }
+	   
+	   public String date_end() {
+	       return date_end;
+	   }
+	 
+	   public void setdate_end(String date_end) {
+	       this.date_end = date_end;
 	   }
 	   
 	   public String getip() {
@@ -95,11 +105,11 @@ public class Auth {
 	       this.session = session;
 	   }
 	   
-	   public String getlogin_in() {
-	       return login_in;
+	   public String getstatus() {
+	       return status;
 	   }
 	 
-	   public void setlogin_in(String login_in) {
-	       this.login_in = login_in;
+	   public void setstatus(String status) {
+	       this.status = status;
 	   }
 }

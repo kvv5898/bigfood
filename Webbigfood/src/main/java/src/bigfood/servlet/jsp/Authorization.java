@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import src.bigfood.tabl.Auth;
 import src.bigfoodlog.logUser;
+import src.other.StoreSession;
 import src.sql.Log_Auth;
 
 @WebServlet(urlPatterns = { "/auth" })
@@ -42,7 +43,8 @@ public class Authorization extends HttpServlet {
 		}
 		  
 		   
-		   
+		           request.setAttribute("active_sessions", StoreSession.sizesession());
+		           request.setAttribute("active_users", StoreSession.sizeuser());
 				   request.setAttribute("errorString", errorString);
 			       request.setAttribute("auth", list);
 			        
@@ -50,6 +52,5 @@ public class Authorization extends HttpServlet {
 			                .getRequestDispatcher("/WEB-INF/jsp/authView.jsp");
 			        dispatcher.forward(request, response);
 			        
-
 }
 }

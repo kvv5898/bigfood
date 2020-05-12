@@ -98,7 +98,7 @@ public class HomeServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+	 
         System.out.println("surname - " + list.get(0).getsurname());
         request.setAttribute("errorString", errorString);
         request.setAttribute("cod_id", list.get(0).cod_id());
