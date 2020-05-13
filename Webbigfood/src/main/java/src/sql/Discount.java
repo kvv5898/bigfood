@@ -114,6 +114,8 @@ public class Discount {
 }
 	
 	
+	
+	
 		
 		public static void Dhistory(Connection conn, //
 	        Integer cod_id, Float discount, Float total) throws SQLException {
@@ -177,6 +179,46 @@ public class Discount {
 	            list.add(us);
 	        }
 	        return list;
+	}	
+
+		public static List<Hdiscounts> Searchlastrecord (Connection conn) throws SQLException {
+	        
+			System.out.println("Search last record");
+			
+			String sql = "SELECT * FROM dhistory ORDER BY id DESC LIMIT 1";
+	 
+			PreparedStatement pstm = conn.prepareStatement(sql);
+	        ResultSet rs = pstm.executeQuery();
+	        List<Hdiscounts> list = new ArrayList<Hdiscounts>();
+	        while (rs.next()) {
+	        	
+	        	Integer id = rs.getInt("id");
+	        	Integer cod_id = rs.getInt("cod_id");
+	        	String date = rs.getString("date");
+	            Float discount = rs.getFloat("discount");
+	            Float total = rs.getFloat("total");
+	            
+	            Hdiscounts us = new Hdiscounts();
+	            
+	            us.setid(id);
+	            us.setcod_id(cod_id);
+	            us.setdate(date);
+	            us.setdiscount(discount);
+	            us.settotal(total);;
+	            list.add(us);
+	        }
+	        return list;
+	}	
+		
+		public static void dellastrecordhistory (Integer id, Connection conn) throws SQLException {
+	        
+			System.out.println("last record delete id:" + id);
+			
+			String sql = "DELETE From dhistory WHERE Id=?";
+	 
+	        PreparedStatement add = conn.prepareStatement(sql);
+	        add.setFloat(1, id);
+	        add.executeUpdate();	
 	}	
 		
 }

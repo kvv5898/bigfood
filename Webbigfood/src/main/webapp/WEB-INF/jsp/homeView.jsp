@@ -41,9 +41,8 @@
   <body>
   
   <p>${data.surname}</p>
-
-  <p style="color: red;">${errorString}</p>
   <div class="header"><jsp:include page="_header.jsp"></jsp:include></div>
+  <p style="color: red;">${errorString}</p>
     <div class="page"><img src="${foto}" width="300" height="200" /></div>
     <div class="scann"><form method="POST">
     <input type="submit" class="sc" name="scann" value="scann" />
@@ -62,10 +61,10 @@
 	<td><input type="text" disabled name="position" size="16" placeholder="${position}" class="display"></td></tr>
 	<tr><td>Скидка</td></tr>
 	<tr>
-	<td><input type="text" readonly name="input" size="16" class="display"></td></tr>
+	<td><input type="text" readonly name="input" size="16" class="display" placeholder="0"></td></tr>
 	<tr><td>
 	<br>
-	<input type="reset" class="esc" name="otmena" value="Отмена"/>
+	<input type="submit" class="esc" name="otmena" value="Отмена"/>
 	<input type="submit" class="ok" value="Применить" />
 	</td>
 	</tr>

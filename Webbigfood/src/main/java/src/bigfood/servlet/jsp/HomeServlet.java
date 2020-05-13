@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import src.bigfood.tabl.Hdiscounts;
 import src.bigfood.tabl.database;
 import src.bigfoodlog.logUser;
 import src.sql.Discount;
@@ -44,13 +45,46 @@ public class HomeServlet extends HttpServlet {
            throws ServletException, IOException { 
 	   String input = (String) request.getParameter("input");
 	   String scann = (String) request.getParameter("scann");
+	   String otmena = (String) request.getParameter("otmena");
 	   String cod_id = (String) request.getParameter("cod_id");
+	   String errorString = null;
 	   HttpSession session = request.getSession();
 	   Connection conn = logUser.getStoredConnection(session);
+	   System.out.println("otmena: " + otmena);
 	   System.out.println("cod_id: " + cod_id);
+	   System.out.println("Start " + scann);
+	   System.out.println("input " + input);
+	   
+	   if (otmena != null) {
+		   System.out.println("otmena: " + otmena);
+		   List<Hdiscounts> list = null;
+		   try {
+			list = Discount.Searchlastrecord(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  try {
+			Discount.dellastrecordhistory(list.get(0).id(), conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		  
+		  try {
+			Discount.ADD(list.get(0).gettotal()-list.get(0).getdiscount(), list.get(0).cod_id(), conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  errorString = "ќтменина последн€€ операци€ по id " + list.get(0).cod_id() + " на сумму " + list.get(0).getdiscount() + " руб.";
+		  request.setAttribute("foto", "https://ic.pics.livejournal.com/cosmogenesis/14848729/383280/383280_original.jpg");  
+	   }
 	   
 	   
-	   if (cod_id != null) {
+	   else if (cod_id != null) {
+		   if (cod_id.length()!=0) {
+		   System.out.println("cod_id: " + cod_id);
 		   Integer cod_id1 = Integer.parseInt(cod_id);
 		   Float discount = Float.parseFloat(input);
 		   Float olddiscount=null;
@@ -84,13 +118,17 @@ public class HomeServlet extends HttpServlet {
 		   
 		   doGet(request, response);
 	   }
-	   
+		   else {
+			   System.out.println("Input fields are empty ");
+			    errorString = "—канируйте id, введите скидку и нажмите применить!!!";
+			    request.setAttribute("foto", "https://static9.depositphotos.com/1431107/1108/i/950/depositphotos_11085415-stock-photo-error-icon.jpg");
+		}
+	   }
 		   
 	   else if (scann != null) {
 		   System.out.println("Start " + scann);
 		   int id = 1 +  (int) (Math.random()*3);
 			System.out.println("Math.random " + id);
-		   String errorString = null;
 		   List<database> list = null;
 	       try {
 			list = Findcod.findcod(conn, id);
@@ -100,7 +138,6 @@ public class HomeServlet extends HttpServlet {
 		}
 	 
         System.out.println("surname - " + list.get(0).getsurname());
-        request.setAttribute("errorString", errorString);
         request.setAttribute("cod_id", list.get(0).cod_id());
         request.setAttribute("foto", list.get(0).getfoto());
         request.setAttribute("fio", list.get(0).getsurname() + " " + list.get(0).getfirst_name() + " " + list.get(0).getotchestvo());
@@ -108,8 +145,9 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("position", list.get(0).getposition());
         
 //        request.setAttribute("database", list);
-   }
-	    
-       doGet(request, response);
+   } 
+   
+	   request.setAttribute("errorString", errorString);
+	   doGet(request, response);
    }
 }
