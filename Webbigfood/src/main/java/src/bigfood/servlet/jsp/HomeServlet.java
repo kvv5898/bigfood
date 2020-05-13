@@ -77,7 +77,7 @@ public class HomeServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		  errorString = "ќтменина последн€€ операци€ по id " + list.get(0).cod_id() + " на сумму " + list.get(0).getdiscount() + " руб.";
+		  errorString = "Cancel on operation id" + list.get(0).cod_id() + " the amount " + list.get(0).getdiscount() + " by.";
 		  request.setAttribute("foto", "https://ic.pics.livejournal.com/cosmogenesis/14848729/383280/383280_original.jpg");  
 	   }
 	   
@@ -120,7 +120,7 @@ public class HomeServlet extends HttpServlet {
 	   }
 		   else {
 			   System.out.println("Input fields are empty ");
-			    errorString = "—канируйте id, введите скидку и нажмите применить!!!";
+			    errorString = "Scan id, enter discount and click submit!!!";
 			    request.setAttribute("foto", "https://static9.depositphotos.com/1431107/1108/i/950/depositphotos_11085415-stock-photo-error-icon.jpg");
 		}
 	   }

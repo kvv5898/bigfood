@@ -72,11 +72,11 @@ public class Statistics extends HttpServlet {
 		        request.setAttribute("position", list.get(0).getposition());
 		        request.setAttribute("discount", list.get(0).getdiscount());
 		        }
-			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "ID состоит из 8 цифр !!!");}
+			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "ID consists of 8 digits !!!");}
 			}
-			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "ID только цифры !!!");}
+			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "ID contains only numbers !!!");}
 			}
-			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "Заполните поле ID !!!");} 
+			   else {System.out.println("errorString - " + errorString); request.setAttribute("error", "Enter ID data !!!");} 
 			   
 	       doGet(request, response);
 	   }
